@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  {% for message in messages %}
+   <p>{{message}}</p>
+  {% endfor %}
+
+  <form method="post" >
+    {% csrf_token %}
+    <label for="Username">Username</label> <br>
+    <input type="text" name="username"> <br>
+    <label for="Password">Password</label> <br>
+    <input type="password" name="password"> <br>
+
+    <button type="submit">submit</button>
+  </form>
+
+  <p>Click <a href="{% url 'signup' %}">here</a> to signup</p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .all{
+      background-color: #1D4025;
+      color: #fefefe;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  {% if user.is_authenticated %}
+  <h1>WELCOME {{user.username}}</h1>
+  <a href="{% url 'logout' %}"><button>logout</button></a>
+  <a href="{% url 'create' %}"><button>create post</button></a>
+  {% else %}
+  <a href="{% url 'login' %}"><button>login</button></a>
+  <a href="{% url 'signup' %}"><button>Sign up</button></a>
+    <h1>Hello World</h1>
+  {% endif %}
+
+  {% for post in posts %}
+
+  <div class="all">
+    <h3 >
+      {{post.title}}
+    </h3>
+    
+    <div class="bottom" style="display: flex;">
+      <p>by {{post.author.username}} </p>
+      <p>created {{post.date}}</p>
+    </div>
+
+    <a href="{% url 'read' post.id %}"> <button class="btn">read more</button></a>
+  </div>
+    
+  {% endfor %}
+</body>
+</html>
